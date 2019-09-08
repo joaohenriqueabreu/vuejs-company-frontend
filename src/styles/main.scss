@@ -1,1 +1,56 @@
 
+@import 'colors';
+
+body {
+    height:         100vh;
+    font-family:    "Sans", sans-serif;
+    margin:         0;
+}
+
+input[type=text] {
+	font-family:			"Sans", sans-serif
+}
+
+/* General style classes */
+.bold {
+    font-weight:    700;
+}
+
+.upper-case {
+    text-transform: uppercase;
+}
+
+/* Class definitions for colors and backgrounds  */
+@each $key, $color in $colors {
+    .bg-#{$key} {
+      background-color: $color;
+    }
+  
+    .color-#{$key} {
+      color: $color;
+    }
+  
+    .color-#{$key}-hover:hover {
+      color: $color;
+    }
+}
+
+/* General classes for padding and margins */
+$sizes: (5, 10, 20, 40);
+@each $size in $sizes {
+    .padding-#{$size} { padding: #{$size}px; }
+    .padding-vertical-#{$size} 		{ padding: #{$size}px 0; }
+    .padding-horizontal-#{$size} 	{ padding: 0 #{$size}px; }
+    .padding-right-#{$size}      	{ padding-right: #{$size}px; }
+		.padding-left-#{$size}       	{ padding-left: #{$size}px; }
+    .padding-top-#{$size}       	{ padding-top: #{$size}px; }
+    .padding-bottom-#{$size}    	{ padding-bottom: #{$size}px; }
+
+    .margin-#{$size}            	{ margin: #{$size}px; }
+    .margin-vertical-#{$size}   	{ margin: #{$size}px 0; }
+    .margin-horizontal-#{$size} 	{ margin: 0 #{$size}px; }
+    .margin-right-#{$size}      	{ margin-right: #{$size}px; }
+    .margin-left-#{$size}       	{ margin-left: #{$size}px; }
+    .margin-top-#{$size}        	{ margin-top: #{$size}px; }
+    .margin-bottom-#{$size}     	{ margin-bottom: #{$size}px; }
+}

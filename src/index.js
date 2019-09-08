@@ -1,35 +1,72 @@
+import 'Styles/_colors.scss';
+import 'Styles/_breakpoints.scss';
 import 'Styles/main.scss';
+
 /** Base libraries */
 import Vue        from 'vue';
 import Vuex       from 'vuex';
 import VueRouter  from 'vue-router';
 
-/** Entry point */
-import App       from './App.vue';
+/** Base view layout */
+import App        from './App.vue';
 
 /** Views */
 import Home       from 'Pages/Home.vue';
 import Company    from 'Pages/Company.vue';
+import NotFound   from 'Pages/NotFound.vue';
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
 
 /** Components */
-Vue.component('Navbar',   require ('Components/Navbar.vue').default);
-Vue.component('Footer',   require ('Components/Footer.vue').default);
+Vue.component('Home',       require ('Pages/Home.vue').default);
+Vue.component('Navbar',     require ('Components/Navbar.vue').default);
+Vue.component('Breadcrumb', require ('Components/Breadcrumb.vue').default);
+Vue.component('Sidebar',    require ('Components/Sidebar.vue').default);
+Vue.component('Footer',     require ('Components/Footer.vue').default);
 
 const routes = [
-  { path: '/',              component: Home},
-  { path: '/company/:id',   component: Company }
+  { 
+    path:       '/', 
+    name:       'home', 
+    component:  Home, 
+    meta:       { mainPage: true }
+  },
+  { 
+    path:       '/company/:id', 
+    name:       'company', 
+    component:  Company,
+    meta:       { label: 'Company Page' },  
+    children:   [
+      { 
+        path:       '/data', 
+        name:       'company.data', 
+        component:  Company,
+        meta:       { label: 'Company Data'}
+      },
+      { 
+        path:       '/table', 
+        name:       'company.table', 
+        component:  Company,
+        meta:       { label: 'Company Table'}
+      },
+    ]
+  },  
+  {
+    path:       '*',
+    name:       '404',
+    component:  NotFound,
+    meta:       { mainPage: true }
+  }
 ];
 
-const router = new VueRouter({
-  routes,
-  mode: 'history' /* Nice URL mode to not display "#" after domain */
-})
+const router = new VueRouter({    
+  base: __dirname,
+  routes: routes  
+});
 
 new Vue({
-  render: createElement => createElement(App),  
-  router,
-  el: '#app',  
+  el:     '#app',  
+  router: router,
+  render: createElement => createElement(App)  
 });

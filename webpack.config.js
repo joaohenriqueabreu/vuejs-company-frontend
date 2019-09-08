@@ -13,7 +13,7 @@ function isProduction() {
 }
 
 module.exports = {
-  mode: process.env.NODE_ENV,
+  mode: process.env.NODE_ENV,  
   watch: !isProduction(),
   watchOptions: {
     aggregateTimeout: 500,
@@ -70,8 +70,8 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           'css-loader',
           // see postcss.config.js for options
-          'postcss-loader',
-          'sass-loader',
+          'postcss-loader', 
+          'sass-loader',         
         ]
       },
       {

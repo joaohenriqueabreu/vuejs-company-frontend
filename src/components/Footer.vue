@@ -10,6 +10,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+  div {
+    height: 10vh;
+    display: flex;    
+  }
 </style>
