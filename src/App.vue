@@ -1,8 +1,8 @@
 <template>  
   <div id='app'>
-    <Navbar></Navbar>
-    <Breadcrumb></Breadcrumb>
+    <Navbar></Navbar>    
     <div class="container">      
+      <Breadcrumb></Breadcrumb>
       <div class="content">
         <Sidebar v-if="! $route.meta.mainPage"></Sidebar>
         <router-view></router-view>

@@ -19,11 +19,12 @@ Vue.use(Vuex);
 Vue.use(VueRouter);
 
 /** Components */
-Vue.component('Home',       require ('Pages/Home.vue').default);
-Vue.component('Navbar',     require ('Components/Navbar.vue').default);
-Vue.component('Breadcrumb', require ('Components/Breadcrumb.vue').default);
-Vue.component('Sidebar',    require ('Components/Sidebar.vue').default);
-Vue.component('Footer',     require ('Components/Footer.vue').default);
+Vue.component('Home',           require ('Pages/Home.vue').default);
+Vue.component('Navbar',         require ('Components/Navbar.vue').default);
+Vue.component('Breadcrumb',     require ('Components/Breadcrumb.vue').default);
+Vue.component('Sidebar',        require ('Components/Sidebar.vue').default);
+Vue.component('Footer',         require ('Components/Footer.vue').default);
+Vue.component('CompanySearch',  require ('Components/CompanySearch.vue').default);
 
 const routes = [
   { 
@@ -33,7 +34,7 @@ const routes = [
     meta:       { mainPage: true }
   },
   { 
-    path:       '/company/:id', 
+    path:       '/company/:slug', 
     name:       'company', 
     component:  Company,
     meta:       { label: 'Company Page' },  

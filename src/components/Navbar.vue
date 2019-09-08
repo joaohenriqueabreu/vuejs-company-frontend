@@ -1,10 +1,30 @@
 <template>
   <div>
     <nav>
-      <div class="icon"><img src="assets/images/logo-pink.png"/></div>      
-      <div class="search">
-        <img src="assets/images/search.png">
-        <input type="text" placeholder="Search Companies">
+      <div class="icon">
+        <a href="#" @click.prevent="$router.push({name: 'home'})">
+          <img src="assets/images/logo-pink.png"/>
+        </a>
+      </div>      
+      <div class="search">      
+        <img src="assets/images/search.png">        
+        <CompanySearch></CompanySearch>
+        <span>or</span>
+        <button>New Smartlist</button>
+      </div>
+      <div class="menu-items">
+        <div>
+          <span>Prospect</span>
+          <img src="assets/images/arrow-down.png"/>
+        </div>       
+        <div>
+          <span>Alert</span>
+          <img src="assets/images/arrow-down.png"/>
+        </div>
+        <div>
+          <span>Learn</span>
+          <img src="assets/images/arrow-down.png"/>
+        </div>
       </div>
     </nav>
   </div>
@@ -12,7 +32,7 @@
 
 <script>
 export default {
-
+  
 }
 </script>
 
@@ -26,10 +46,6 @@ export default {
     height:           10vmin;            
   }
 
-  div {
-    @extend .padding-right-10;
-  }
-
   .icon {        
     width:            10vw;
     display:          flex;
@@ -39,6 +55,7 @@ export default {
   }
 
   .search {
+    @extend .padding-right-20, .color-white;
     position:         relative;
     display:          flex;
     flex-direction:   row;
@@ -48,16 +65,29 @@ export default {
       @extend .padding-left-10;
       position:       absolute;
       left:           0;
+    }    
+
+    span {
+      @extend .padding-horizontal-20, .bold, .upper-case;
     }
 
-    input[type=text] {
-      @extend .bg-dark-blue, .padding-left-40, .color-white;
-      height:           9vh;
-      width:            20vw;
-      border:           none;
-      &::placeholder {
-        @extend .color-white;
-      }
+    button {
+      @extend .bg-mid-blue, .upper-case, .color-white, .bold;
+      width:          10vw;
+      height:         9vh;      
+      border:         none;      
+      border-radius:  10px;
     }
+  }
+
+  .menu-items {
+    @extend .color-white, .upper-case, .padding-horizontal-20, .bold;
+    width:            30vw;    
+    display:          flex;
+    align-items:      center;    
+    div {      
+      @extend .padding-horizontal-20;
+      cursor:         pointer;      
+    }        
   }
 </style>

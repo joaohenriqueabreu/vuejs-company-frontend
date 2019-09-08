@@ -19,12 +19,14 @@ export default {
 
 <style lang="scss" scoped>
 	@import 'Styles/main.scss';
-	ul {		
-		list-style: none;
-		display: 		flex;
-		flex-direction: row;
+	ul {
+		@extend .padding-vertical-20;		
+		list-style: 		none;
+		display: 				flex;
+		flex-direction: row;		
+		
 		li, span, a {
-			@extend .color-mid-grey, .bold, .upper-case, .padding-left-10;
+			@extend .color-mid-grey, .bold, .upper-case, .padding-right-10;
 		}
 	}
 	a {
