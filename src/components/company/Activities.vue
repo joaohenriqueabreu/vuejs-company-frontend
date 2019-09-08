@@ -1,6 +1,7 @@
 <template>
   <div>
-      <h1>Page</h1>
+      <h4>Activities</h4>
+      <hr>
   </div>
 </template>
 

@@ -7,6 +7,14 @@ body {
     margin:         0;
 }
 
+a {
+	text-decoration: 	none;
+}
+
+hr {
+	border: 0.5px solid #{$lightGrey};
+}
+
 input[type=text] {
 	font-family:			"Sans", sans-serif;
 	font-size:				1.1em;	
@@ -23,6 +31,24 @@ input[type=text] {
 
 .rounded-corner {
 	border-radius: 		5px;
+}
+
+.row {
+	display: 				flex;
+	flex-direction: row;
+}
+
+.column {
+	display:				flex;
+	flex-direction:	column;
+}
+
+.info-box {	
+	@extend .bg-white, .rounded-corner, .margin-right-10;		
+	width: 	28vw;	
+	h4 {
+		@extend .padding-10;
+	}
 }
 
 /* Class definitions for colors and backgrounds  */

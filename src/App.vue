@@ -7,7 +7,7 @@
         <router-view></router-view>
       </div>      
     </div>    
-    <Footer></Footer>
+    <Footer class="container"></Footer>
   </div>
 </template>
 
@@ -31,6 +31,6 @@ export default { }
   }
 
   .content {
-    height:   80vh;  
+    height:   60vh;  
   }
 </style>

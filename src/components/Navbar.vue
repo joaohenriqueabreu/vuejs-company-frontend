@@ -4,7 +4,7 @@
       <div class="icon">
         <router-link :to="{ name: 'home' }" v-slot="{ href, navigate }">
           <a :href="href" @click="navigate">
-            <img src="assets/images/logo-pink.png"/>
+            <img src="assets/images/logo.png"/>
           </a>
         </router-link>        
       </div>      

@@ -1,7 +1,7 @@
 <template>
   <div>
     <Sidebar class="sidebar"></Sidebar>
-    <router-view class="company-info"></router-view>
+    <router-view class="company-area"></router-view>
   </div>
 </template>
 
@@ -21,5 +21,9 @@ export default {
   .sidebar {
     @extend .margin-right-40;
     width:    20vw;    
+  }
+
+  .company-area {
+    width:    60vw;
   }
 </style>

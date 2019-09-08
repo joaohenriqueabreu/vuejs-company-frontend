@@ -14,7 +14,7 @@ export default {
 		return {
 			sidebarOptions: [
 				{name: 'company.data', 	label: 'Company Data'},
-				{name: 'company', 			label: 'Company Table'},
+				{name: 'company.table', label: 'Company Table'},
 				{name: 'company', 			label: 'Company Page'},
 			]
 		}		

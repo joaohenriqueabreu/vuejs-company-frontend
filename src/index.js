@@ -3,35 +3,39 @@ import 'Styles/_breakpoints.scss';
 import 'Styles/main.scss';
 
 /** Base libraries */
-import Vue        from 'vue';
-import Vuex       from 'vuex';
-import VueRouter  from 'vue-router';
+import Vue          from 'vue';
+import VueRouter    from 'vue-router';
 
 /** Base view layout */
-import App        from './App.vue';
+import App          from './App.vue';
 
 /** Views */
-import Home       from 'Pages/Home.vue';
-import Company    from 'Pages/Company.vue';
-import NotFound   from 'Pages/NotFound.vue';
+import Home         from 'Pages/Home.vue';
+import Company      from 'Pages/CompanyManager.vue';
+import NotFound     from 'Pages/NotFound.vue';
 
-import CompanyPage from 'Pages/CompanyPage.vue';
-import CompanyData from 'Pages/CompanyData.vue';
+import CompanyInfo  from 'Pages/CompanyInfo.vue';
+import CompanyData  from 'Pages/CompanyData.vue';
+import CompanyTable from 'Pages/CompanyTable.vue';
 
 /** General purpose Utils */
-import AppUtils   from 'Mixins/AppUtils.vue';
+import AppUtils     from 'Mixins/AppUtils.vue';
 
-Vue.use(Vuex);
 Vue.use(VueRouter);
 
 /** Components */
-Vue.component('Home',           require ('Pages/Home.vue').default);
-Vue.component('Navbar',         require ('Components/Navbar.vue').default);
-Vue.component('Breadcrumb',     require ('Components/Breadcrumb.vue').default);
-Vue.component('Sidebar',        require ('Components/Sidebar.vue').default);
-Vue.component('Footer',         require ('Components/Footer.vue').default);
+Vue.component('Home',               require ('Pages/Home.vue').default);
+Vue.component('Navbar',             require ('Components/Navbar.vue').default);
+Vue.component('Breadcrumb',         require ('Components/Breadcrumb.vue').default);
+Vue.component('Sidebar',            require ('Components/Sidebar.vue').default);
+Vue.component('Footer',             require ('Components/Footer.vue').default);
 
-Vue.component('CompanySearch',  require ('Components/CompanySearch.vue').default);
+Vue.component('CompanySearch',      require ('Components/company/CompanySearch.vue').default);
+Vue.component('CompanyActivities',  require ('Components/company/Activities.vue').default);
+Vue.component('CompanyDescription', require ('Components/company/Description.vue').default);
+Vue.component('SimilarCompanies',   require ('Components/company/SimilarCompanies.vue').default);
+Vue.component('SpendHistory',       require ('Components/company/SpendHistory.vue').default);
+Vue.component('SpendHistoryGraph',  require ('Components/company/SpendHistoryGraph.vue').default);
 
 const routes = [
   { 
@@ -45,21 +49,21 @@ const routes = [
     component:  Company,      
     children:   [
       { 
-        path:       '/',         
+        path:       '',         
         name:       'company', 
-        component:  CompanyPage,
+        component:  CompanyInfo,
         meta:       { label: 'Company Page' }
       },
       { 
-        path:       '/company/:slug/data', 
+        path:       'data',
         name:       'company.data', 
         component:  CompanyData,
         meta:       { label: 'Company Data'}
       },
       { 
-        path:       '/table', 
+        path:       'table', 
         name:       'company.table', 
-        component:  CompanyPage,
+        component:  CompanyTable,
         meta:       { label: 'Company Table'}
       },
     ]
@@ -82,7 +86,7 @@ const router = new VueRouter({
 
 new Vue({
   el:     '#app',  
-  router: router,
+  router: router,  
   mixins: [AppUtils],
   render: createElement => createElement(App)      
 });
