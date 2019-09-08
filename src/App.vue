@@ -3,8 +3,7 @@
     <Navbar></Navbar>    
     <div class="container">      
       <Breadcrumb></Breadcrumb>
-      <div class="content">
-        <Sidebar v-if="! $route.meta.mainPage"></Sidebar>
+      <div class="content">        
         <router-view></router-view>
       </div>      
     </div>    

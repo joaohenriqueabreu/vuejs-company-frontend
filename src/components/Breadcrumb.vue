@@ -1,12 +1,15 @@
 <template>
   <div>
 		<ul>
-  		<li>
-				<span v-if="$route.meta.mainPage">Home</span>
-				<a v-else href="#" @click.prevent="$router.push({ name: 'home' })">Home</a>
-			</li>  	
-			<li v-if="! $route.meta.mainPage">/</li>
-			<li v-if="! $route.meta.mainPage">{{ $route.meta.label }}</li>	
+			<router-link :to="{name: 'home'}" v-slot="{ href, route, navigate}">
+				<li><a :href="href" @click="navigate">Home</a></li>				
+			</router-link>						
+			<router-link :to="{name: $router.name}" v-slot="{ href, route, navigate}">								
+				<li v-if="route.name !== 'home'">
+					<span>/</span>
+					<a :href="href" @click="navigate">{{ route.meta.label }}</a>
+				</li>
+			</router-link>
 		</ul>
 	</div>
 </template>
@@ -24,9 +27,14 @@ export default {
 		list-style: 		none;
 		display: 				flex;
 		flex-direction: row;		
-		
+		font-size:			0.8em;				
+
+		span {
+			@extend .padding-horizontal-10;
+		}
+
 		li, span, a {
-			@extend .color-mid-grey, .bold, .upper-case, .padding-right-10;
+			@extend .color-mid-grey, .upper-case;			
 		}
 	}
 	a {

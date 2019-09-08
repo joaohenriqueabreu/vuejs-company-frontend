@@ -2,12 +2,13 @@
   <div>
     <nav>
       <div class="icon">
-        <a href="#" @click.prevent="$router.push({name: 'home'})">
-          <img src="assets/images/logo-pink.png"/>
-        </a>
+        <router-link :to="{ name: 'home' }" v-slot="{ href, navigate }">
+          <a :href="href" @click="navigate">
+            <img src="assets/images/logo-pink.png"/>
+          </a>
+        </router-link>        
       </div>      
-      <div class="search">      
-        <img src="assets/images/search.png">        
+      <div class="search">                      
         <CompanySearch></CompanySearch>
         <span>or</span>
         <button>New Smartlist</button>
@@ -55,38 +56,33 @@ export default {
   }
 
   .search {
-    @extend .padding-right-20, .color-white;
-    position:         relative;
     display:          flex;
     flex-direction:   row;
     align-items:      center;
-
-    img {
-      @extend .padding-left-10;
-      position:       absolute;
-      left:           0;
-    }    
 
     span {
       @extend .padding-horizontal-20, .bold, .upper-case;
     }
 
     button {
-      @extend .bg-mid-blue, .upper-case, .color-white, .bold;
+      @extend .bg-mid-blue, .upper-case, .color-white, .bold, .rounded-corner;
       width:          10vw;
       height:         9vh;      
-      border:         none;      
-      border-radius:  10px;
+      border:         none;            
     }
   }
 
   .menu-items {
     @extend .color-white, .upper-case, .padding-horizontal-20, .bold;
-    width:            30vw;    
+    width:            40vw;    
     display:          flex;
-    align-items:      center;    
+    flex-direction:   row;
     div {      
       @extend .padding-horizontal-20;
+      display:          flex;
+      flex-direction:   row;
+      align-items:      center;  
+      justify-content:  center;  
       cursor:         pointer;      
     }        
   }

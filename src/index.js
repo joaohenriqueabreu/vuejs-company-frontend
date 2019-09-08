@@ -15,6 +15,12 @@ import Home       from 'Pages/Home.vue';
 import Company    from 'Pages/Company.vue';
 import NotFound   from 'Pages/NotFound.vue';
 
+import CompanyPage from 'Pages/CompanyPage.vue';
+import CompanyData from 'Pages/CompanyData.vue';
+
+/** General purpose Utils */
+import AppUtils   from 'Mixins/AppUtils.vue';
+
 Vue.use(Vuex);
 Vue.use(VueRouter);
 
@@ -24,6 +30,7 @@ Vue.component('Navbar',         require ('Components/Navbar.vue').default);
 Vue.component('Breadcrumb',     require ('Components/Breadcrumb.vue').default);
 Vue.component('Sidebar',        require ('Components/Sidebar.vue').default);
 Vue.component('Footer',         require ('Components/Footer.vue').default);
+
 Vue.component('CompanySearch',  require ('Components/CompanySearch.vue').default);
 
 const routes = [
@@ -34,21 +41,25 @@ const routes = [
     meta:       { mainPage: true }
   },
   { 
-    path:       '/company/:slug', 
-    name:       'company', 
-    component:  Company,
-    meta:       { label: 'Company Page' },  
+    path:       '/company/:slug',     
+    component:  Company,      
     children:   [
       { 
-        path:       '/data', 
+        path:       '/',         
+        name:       'company', 
+        component:  CompanyPage,
+        meta:       { label: 'Company Page' }
+      },
+      { 
+        path:       '/company/:slug/data', 
         name:       'company.data', 
-        component:  Company,
+        component:  CompanyData,
         meta:       { label: 'Company Data'}
       },
       { 
         path:       '/table', 
         name:       'company.table', 
-        component:  Company,
+        component:  CompanyPage,
         meta:       { label: 'Company Table'}
       },
     ]
@@ -61,13 +72,17 @@ const routes = [
   }
 ];
 
-const router = new VueRouter({    
-  base: __dirname,
+const router = new VueRouter({      
+  /** Can remove '#' tag after domain, need to use a history catcher serve as described on:
+    * @see https://router.vuejs.org/guide/essentials/history-mode.html
+    * mode: 'history'   
+    * */
   routes: routes  
 });
 
 new Vue({
   el:     '#app',  
   router: router,
-  render: createElement => createElement(App)  
+  mixins: [AppUtils],
+  render: createElement => createElement(App)      
 });

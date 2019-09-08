@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Wow</h1>
+    <CompanySearch></CompanySearch>
   </div>
 </template>
 
@@ -10,6 +10,11 @@ export default {
 }
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+  div {
+    display:          flex;
+    flex-direction:   row;
+    align-items:      center;
+    justify-content:  center;
+  }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>We are a Company</h1>
+    <Sidebar class="sidebar"></Sidebar>
+    <router-view class="company-info"></router-view>
   </div>
 </template>
 
@@ -10,6 +11,15 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+  @import 'Styles/main.scss';
+  div {
+    display:        flex;
+    flex-direction: row;
+  }
 
+  .sidebar {
+    @extend .margin-right-40;
+    width:    20vw;    
+  }
 </style>

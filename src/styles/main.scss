@@ -21,6 +21,10 @@ input[type=text] {
     text-transform: uppercase;
 }
 
+.rounded-corner {
+	border-radius: 		5px;
+}
+
 /* Class definitions for colors and backgrounds  */
 @each $key, $color in $colors {
     .bg-#{$key} {
