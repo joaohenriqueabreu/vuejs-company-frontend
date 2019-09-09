@@ -11,7 +11,9 @@
 
 <script>
 export default { 
-  data: () => ({company: ''}),
+  data: () => ({
+    company: ''
+  }),
   methods: {
     searchCompany: function () {
       this.$router.push({ name: 'company', params: { slug: this.company }});

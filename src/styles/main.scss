@@ -46,6 +46,7 @@ input[type=text] {
 .info-box {	
 	@extend .bg-white, .rounded-corner, .margin-right-10;		
 	width: 	28vw;	
+	
 	h4 {
 		@extend .padding-10;
 	}
