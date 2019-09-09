@@ -4,6 +4,7 @@ import 'Styles/main.scss';
 
 /** Base libraries */
 import Vue          from 'vue';
+import Vuex         from 'vuex';
 import VueRouter    from 'vue-router';
 
 /** Base view layout */
@@ -21,7 +22,10 @@ import CompanyTable from 'Pages/CompanyTable.vue';
 /** General purpose Utils */
 import AppUtils     from 'Mixins/AppUtils.vue';
 
+Vue.use(Vuex);
 Vue.use(VueRouter);
+
+Vue.mixin(AppUtils);
 
 /** Components */
 Vue.component('Home',               require ('Pages/Home.vue').default);
@@ -84,9 +88,21 @@ const router = new VueRouter({
   routes: routes  
 });
 
+const store = new Vuex.Store({
+  state: {
+    company: {
+      logo: 'assets/images/microsoft.png',
+      name: 'Microsoft',
+      description: 'asda asd asdas sada sdas dasdas das dasd adas das'
+    }
+  }, 
+  mutations: { },
+  actions: { }
+});
+
 new Vue({
   el:     '#app',  
   router: router,  
-  mixins: [AppUtils],
+  store:  store,  
   render: createElement => createElement(App)      
 });

@@ -1,7 +1,11 @@
 <script>
 export default {
     methods: {
-        isMobile: () => /Android|webOS|iPhone||iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+        isMobile: () => {
+            console.log(navigator.userAgent)
+            console.log(/Android|webOS|iPhone||iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+            return /Android|webOS|iPhone||iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+        }
     }    
 }
 </script>

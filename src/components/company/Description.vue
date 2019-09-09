@@ -18,7 +18,7 @@ export default {
 			return this.$store.state.company.name;
 		},
 		description () {
-			return $this.$store.state.company.description;
+			return this.$store.state.company.description;
 		}
 	}
 }
