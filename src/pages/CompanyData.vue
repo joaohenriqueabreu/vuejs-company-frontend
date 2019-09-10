@@ -1,15 +1,16 @@
 <template>
   <div>
-      <h1>Data</h1>
+      <CompanyForm></CompanyForm>
+      <CompanyNotes></CompanyNotes>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default { }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+  div {
+    @extend %column, %bg-white, %rounded-corner, %padding-20;
+  }
 </style>

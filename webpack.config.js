@@ -71,7 +71,12 @@ module.exports = {
           'css-loader',
           // see postcss.config.js for options
           'postcss-loader', 
-          'sass-loader',         
+          {
+            loader: 'sass-loader',
+            options: {
+              data: `@import 'Styles/main.scss';`
+            }
+          },         
         ]
       },
       {

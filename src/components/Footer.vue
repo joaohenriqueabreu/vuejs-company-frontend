@@ -1,30 +1,31 @@
 <template>
-  <div class="footer">
-		<div class="section">
-      <div> 
-        <a v-for="(option, index) in footerOptions" 
-          v-bind:key="option.label" :href="baseUrl.concat(option.action)" target="_blank">
-          {{ option.label }}
-          <span v-if="index !== footerOptions.length - 1">|</span>      
-        </a>
-      </div>      
-      <div>
-        © Copyright {{ currentYear }}, Intricately, Inc. All rights reserved.
-      </div>
-    </div>
-    <div class="section"></div>
-    <div class="section right">
-      <div>
-        <a :href="baseUrl.concat('/terms')" target="_blank">Terms and Conditions</a>
-        <span>|</span>
-        <a :href="baseUrl.concat('/privacy')" target="_blank">Privacy Policy</a>
-      </div>
-      <div>
-        <a href="#"><img src="assets/images/linkedin.png"/></a>
-        <a href="#"><img src="assets/images/facebook.png"/></a>
-        <a href="#"><img src="assets/images/twitter.png"/></a>        
-      </div>
-    </div>
+  <div>
+    <footer>
+      <section class="left">
+        <div> 
+          <a v-for="(option, index) in footerOptions" 
+            v-bind:key="option.label" :href="baseUrl.concat(option.action)" target="_blank">
+            {{ option.label }}
+            <span v-if="index !== footerOptions.length - 1">|</span>      
+          </a>
+        </div>      
+        <div>
+          © Copyright {{ currentYear }}, Intricately, Inc. All rights reserved.
+        </div>
+      </section>
+      <section class="right">
+        <div>
+          <a :href="baseUrl.concat('/terms')" target="_blank">Terms and Conditions</a>
+          <span>|</span>
+          <a :href="baseUrl.concat('/privacy')" target="_blank">Privacy Policy</a>
+        </div>
+        <div>
+          <a href="#"><img src="assets/images/linkedin.png"/></a>
+          <a href="#"><img src="assets/images/facebook.png"/></a>
+          <a href="#"><img src="assets/images/twitter.png"/></a>        
+        </div>
+      </section>
+    </footer>
   </div>
 </template>
 
@@ -49,37 +50,40 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import 'Styles/main.scss';
-  .footer {
-    @extend .bg-light-grey, .color-mid-grey;    
-    height:             10vh;    
-    padding:            5vh 10vw;
-    display:            flex;
-    flex-direction:     row;  
+  footer {
+    @extend %bg-light-grey, %color-mid-grey, %full-width, %padding-top-20, %padding-bottom-20;              
 
-    .section {
-      width:            33%;  
-      font-size:        0.7em; 
+    display:            flex;
+    flex-direction:     row;      
+
+    section {      
+      font-size:        0.7em;
+      width:            50vw; 
       div {
-        @extend .padding-bottom-10;
+        @extend %padding-bottom-10;
       }      
 
       a {
-        @extend .color-mid-grey;
+        @extend %color-mid-grey;
       }
 
       img {
-        @extend .padding-right-10;        
+        @extend %padding-right-10;        
       }
 
       span {
-        @extend .padding-horizontal-10
+        @extend %padding-horizontal-10
       }  
 
+      &.left {
+        @extend %column;        
+        align-items:  flex-start;
+        padding-left: 10vw;        
+      }
       &.right {
-        display:          flex;
-        flex-direction:   column;
-        align-items:      flex-end;
+        @extend %column;
+        align-items:    flex-end;
+        padding-right:  10vw;
       }
     }    
   }

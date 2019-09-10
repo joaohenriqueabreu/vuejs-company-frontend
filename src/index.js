@@ -11,16 +11,20 @@ import CompanyStoreManager  from 'Store/company.js';
 import App          from './App.vue';
 
 /** General purpose Utils */
+import Faker        from 'faker';
+import VModal       from 'vue-js-modal';
 import AppUtils     from 'Mixins/AppUtils.vue';
 
+Vue.use(VModal);
 Vue.mixin(AppUtils);
 
 /** Components */
 Vue.component('Navbar',             require ('Components/Navbar.vue').default);
 Vue.component('Breadcrumb',         require ('Components/Breadcrumb.vue').default);
 Vue.component('Sidebar',            require ('Components/Sidebar.vue').default);
-Vue.component('Footer',             require ('Components/Footer.vue').default);
+Vue.component('NavFooter',          require ('Components/Footer.vue').default);
 
+/** Company Page view components */
 Vue.component('CompanySearch',      require ('Components/company/CompanySearch.vue').default);
 Vue.component('CompanyActivities',  require ('Components/company/Activities.vue').default);
 Vue.component('CompanyDescription', require ('Components/company/Description.vue').default);
@@ -28,6 +32,11 @@ Vue.component('SimilarCompanies',   require ('Components/company/SimilarCompanie
 Vue.component('SpendHistory',       require ('Components/company/SpendHistory.vue').default);
 Vue.component('SpendHistoryGraph',  require ('Components/company/SpendHistoryGraph.vue').default);
 
+/** Company data page components */
+Vue.component('CompanyForm',        require('Components/company/Form.vue').default);
+Vue.component('CompanyNotes',       require('Components/company/AdditionalNotes.vue').default);
+
+/** Initialize vue */
 new Vue({
   el:     '#app',  
   router: RouteManager,  

@@ -1,10 +1,12 @@
 <template>
-	<div>
-		<router-link v-for="option in sidebarOptions" 
-			:to="{ name: option.name, params: {slug: $route.params.slug} }" v-slot="{ href, navigate }"
-			v-bind:key="option.label"> 			
-			<a :href="href" @click="navigate">{{ option.label }}</a>
-		</router-link>
+	<div>		
+		<div class="bar-items">
+			<router-link v-for="option in sidebarOptions" 
+				:to="{ name: option.name, params: {slug: $route.params.slug} }" v-slot="{ href, navigate }"
+				v-bind:key="option.label"> 			
+				<a :href="href" @click="navigate">{{ option.label }}</a>
+			</router-link>
+		</div>
 	</div>
 </template>
 
@@ -23,18 +25,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-	@import 'Styles/main.scss';
-	div {		
-		@extend .rounded-corner, .bg-white;
-		display: 					flex;
-		flex-direction: 	column;
-		justify-content: 	center;				
-		border: 					1px solid $lightGrey;	
+	.bar-items {		
+		@extend %column, %rounded-corner, %bg-white, %full-width;				
+		border: 						1px solid $lightGrey;	
+		height:							fit-content;		
 
 		a, span {
-			@extend .padding-20;				
-			text-decoration: none;
-			border-bottom:	1px solid $lightGrey;	
+			@extend %padding-20;				
+			text-decoration: 	none;
+			border-bottom:		1px solid $lightGrey;	
 		}
 	}
 </style>

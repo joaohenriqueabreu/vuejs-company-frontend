@@ -7,7 +7,7 @@
         <router-view></router-view>
       </div>      
     </div>    
-    <Footer class="container"></Footer>
+    <NavFooter></NavFooter>
   </div>
 </template>
 
@@ -15,22 +15,37 @@
 export default { }
 </script>
 
-<style lang="scss" scoped>
-  @import 'Styles/main.scss';
+<style lang="scss">
+  html {    
+    position:   relative;    
+  }
+
   body {
-    margin:   0px;    
+    margin:     0;      
   }
 
   #app {
-    @extend .bg-light-blue;
-    height:   100vh;    
+    @extend %bg-light-blue;
+    height:     100vh;       
+    overflow-y: hidden;
+
+    header {
+      @extend %full-width;
+      position: absolute;
+      top:      0;
+      left:     0;    
+    }
+
+    footer {      
+      @extend %full-width;
+      position: absolute;
+      bottom:   0;
+      left:     0;                
+    }
   }
 
   .container {
-    padding:  0 10vw;    
-  }
-
-  .content {
-    height:   60vh;  
+    padding:    5vh 10vw;
+    min-height: 70vh;    
   }
 </style>

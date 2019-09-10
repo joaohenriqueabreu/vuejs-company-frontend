@@ -23,27 +23,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import 'Styles/main.scss';
   div {
-    @extend .color-white;
+    @extend %color-white;
     position:         relative;
     display:          flex;
     flex-direction:   row;
     align-items:      center;
 
     img {
-      @extend .padding-left-10;
+      @extend %padding-left-10;
       position:       absolute;
       left:           0;
     } 
 
     input[type=text] {
-        @extend .bg-dark-blue, .padding-left-40, .color-white, .rounded-corner;
-        height:         9vh;
+        @extend %bg-dark-blue, %padding-left-40, %color-white, %rounded-corner;
+        height:         4vh;
         width:          20vw;
         border:         none;
         &::placeholder {
-          @extend .color-white;
+          @extend %color-white;
         }
       }
   }

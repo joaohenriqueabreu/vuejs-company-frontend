@@ -12,14 +12,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import 'Styles/main.scss';
   div {
     display:        flex;
     flex-direction: row;
   }
 
   .sidebar {
-    @extend .margin-right-40;
+    @extend %margin-right-40;
     width:    20vw;    
   }
 
