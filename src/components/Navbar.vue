@@ -28,6 +28,9 @@
             <img src="assets/images/arrow-down.png"/>
           </div>
         </div>
+        <div>
+          <Profile></Profile>
+        </div>
       </nav>
     </header>
   </div>
@@ -44,7 +47,7 @@ export default {
     @extend %bg-purple, %color-white, %padding-vertical-10, %full-width;
     display:          flex;
     flex-direction:   row;               
-    max-height:       5vh; 
+    min-height:       5vh; 
   }
 
   .icon {        

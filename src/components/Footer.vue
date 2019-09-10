@@ -2,7 +2,7 @@
   <div>
     <footer>
       <section class="left">
-        <div> 
+        <div class="main-items"> 
           <a v-for="(option, index) in footerOptions" 
             v-bind:key="option.label" :href="baseUrl.concat(option.action)" target="_blank">
             {{ option.label }}
@@ -14,7 +14,7 @@
         </div>
       </section>
       <section class="right">
-        <div>
+        <div class="main-items">
           <a :href="baseUrl.concat('/terms')" target="_blank">Terms and Conditions</a>
           <span>|</span>
           <a :href="baseUrl.concat('/privacy')" target="_blank">Privacy Policy</a>
@@ -59,6 +59,7 @@ export default {
     section {      
       font-size:        0.7em;
       width:            50vw; 
+
       div {
         @extend %padding-bottom-10;
       }      
@@ -74,6 +75,12 @@ export default {
       span {
         @extend %padding-horizontal-10
       }  
+
+      .main-items {
+        a {
+          @extend %color-dark-grey;
+        }
+      }
 
       &.left {
         @extend %column;        

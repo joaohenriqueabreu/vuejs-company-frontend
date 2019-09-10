@@ -23,6 +23,7 @@ export default {
   }
 
   .company-area {
+    @extend %thin-grey-border;
     width:    60vw;
   }
 </style>

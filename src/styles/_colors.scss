@@ -1,19 +1,19 @@
-
+/* Extracted from color picker */
 $purple:  	rgb(57, 71, 131);
 $darkBlue:	rgb(31, 43, 90);
 $lightBlue:	rgb(231, 233, 243);
-$midBlue:		rgb(93, 105,154);
-$white:			rgb(255, 255, 255);
+$midBlue:	rgb(93, 105,154);
+$white:		rgb(255, 255, 255);
 $darkGrey:	rgb(51, 51, 51);
-$midGrey:		rgb(80, 80, 80);
+$midGrey:	rgb(180, 180, 180);
 $lightGrey:	rgb(220, 223, 233);
 
 $colors: (
-	purple: 		$purple,
+	purple: 	$purple,
 	dark-blue: 	$darkBlue,
 	light-blue:	$lightBlue,
 	mid-blue: 	$midBlue,
-	white: 			$white,
+	white: 		$white,
 	dark-grey: 	$darkGrey,
 	mid-grey: 	$midGrey,
 	light-grey: $lightGrey,

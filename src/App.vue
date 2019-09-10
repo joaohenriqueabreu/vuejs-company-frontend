@@ -15,25 +15,21 @@
 export default { }
 </script>
 
-<style lang="scss">
-  html {    
-    position:   relative;    
-  }
-
+<style lang="scss">  
   body {
     margin:     0;      
   }
 
   #app {
     @extend %bg-light-blue;
-    height:     100vh;       
-    overflow-y: hidden;
+    min-height: 100vh;
+    position:   relative;
 
     header {
       @extend %full-width;
-      position: absolute;
+      position: fixed;
       top:      0;
-      left:     0;    
+      left:     0;       
     }
 
     footer {      
@@ -45,7 +41,7 @@ export default { }
   }
 
   .container {
-    padding:    5vh 10vw;
+    padding:    8vh 10vw 10vw 10vw;
     min-height: 70vh;    
   }
 </style>

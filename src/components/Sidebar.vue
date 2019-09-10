@@ -26,9 +26,8 @@ export default {
 
 <style lang="scss" scoped>
 	.bar-items {		
-		@extend %column, %rounded-corner, %bg-white, %full-width;				
-		border: 						1px solid $lightGrey;	
-		height:							fit-content;		
+		@extend %column, %rounded-corner, %bg-white, %full-width, %thin-grey-border;							
+		height:	fit-content;		
 
 		a, span {
 			@extend %padding-20;				

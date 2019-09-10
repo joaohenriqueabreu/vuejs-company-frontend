@@ -1,9 +1,9 @@
 <template>
-  <div class="column">
+  <div>
       <CompanyDescription></CompanyDescription>
-      <div class="row">
+      <div>
         <CompanyActivities class="info-box"></CompanyActivities>
-        <div class="column">
+        <div>
           <SimilarCompanies class="info-box"></SimilarCompanies>
           <SpendHistoryGraph class="info-box"></SpendHistoryGraph>
           <SpendHistory class="info-box"></SpendHistory>

@@ -3,15 +3,15 @@ import 'Styles/_breakpoints.scss';
 import 'Styles/main.scss';
 
 /** Base libraries */
-import Vue                  from 'vue';
-import RouteManager         from 'Router/router.js';
-import CompanyStoreManager  from 'Store/company.js';
+import Vue           from 'vue';
+import RouteManager  from 'Router/router.js';
+import StoreManager  from 'Store/store.js';
 
 /** Base view layout */
 import App          from './App.vue';
 
 /** General purpose Utils */
-import Faker        from 'faker';
+/* import Faker        from 'faker'; */
 import VModal       from 'vue-js-modal';
 import AppUtils     from 'Mixins/AppUtils.vue';
 
@@ -20,6 +20,7 @@ Vue.mixin(AppUtils);
 
 /** Components */
 Vue.component('Navbar',             require ('Components/Navbar.vue').default);
+Vue.component('Profile',            require ('Components/Profile.vue').default);
 Vue.component('Breadcrumb',         require ('Components/Breadcrumb.vue').default);
 Vue.component('Sidebar',            require ('Components/Sidebar.vue').default);
 Vue.component('NavFooter',          require ('Components/Footer.vue').default);
@@ -40,6 +41,6 @@ Vue.component('CompanyNotes',       require('Components/company/AdditionalNotes.
 new Vue({
   el:     '#app',  
   router: RouteManager,  
-  store:  CompanyStoreManager,  
+  store:  StoreManager,    
   render: createElement => createElement(App)      
 });
