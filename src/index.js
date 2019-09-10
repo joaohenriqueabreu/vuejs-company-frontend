@@ -11,12 +11,13 @@ import StoreManager  from 'Store/store.js';
 import App          from './App.vue';
 
 /** General purpose Utils */
-/* import Faker        from 'faker'; */
 import VModal       from 'vue-js-modal';
+import Vuelidate    from 'vuelidate'
 import AppUtils     from 'Mixins/AppUtils.vue';
 
 Vue.use(VModal);
 Vue.mixin(AppUtils);
+Vue.use(Vuelidate);
 
 /** Components */
 Vue.component('Navbar',             require ('Components/Navbar.vue').default);
@@ -35,7 +36,6 @@ Vue.component('SpendHistoryGraph',  require ('Components/company/SpendHistoryGra
 
 /** Company data page components */
 Vue.component('CompanyForm',        require('Components/company/Form.vue').default);
-Vue.component('CompanyNotes',       require('Components/company/AdditionalNotes.vue').default);
 
 /** Initialize vue */
 new Vue({
