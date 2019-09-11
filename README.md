@@ -1,8 +1,4 @@
 
-# Intricately Front-End Challenge
-
-Requirements and design mocks are available [here](https://docs.google.com/document/d/1B3ofnK0Nc2Dawtpj1fLky9ekzqjjri_EjDXQv8Nmpiw/edit#heading=h.rmoqo627p0vn).
-
 ## Prerequisites
 
 [Node](https://nodejs.org/en/) 8.4.0 and [npm](https://www.npmjs.com/get-npm) 5.4.1
