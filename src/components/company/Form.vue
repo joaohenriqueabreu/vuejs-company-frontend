@@ -1,31 +1,42 @@
 <template>
   <div>		
 		<p>{{ formHeading }}</p>
-		<form action="">
+		<form @change="attemptSubmit">
 			<div>
 				<label for="name">Company Name</label>
 				<input type="text" placeholder="e.g. Your Company Name" v-model="$v.name.$model">
-				<div class="error" v-if="! $v.name.required">Field is required</div>
-				<div class="error" v-if="! $v.name.minLength">Name must have at least {{$v.name.$params.minLength.min}} letters.</div>
+				<div v-if="$v.name.$anyError">
+					<div class="error" v-if="! $v.name.required">Field is required</div>
+					<div class="error" v-if="! $v.name.minLength">Name must have at least {{$v.name.$params.minLength.min}} letters.</div>
+				</div>
 			</div>
 			<div>
 				<label for="name">Company Spend</label>
-				<input type="text" placeholder="e.g. $150.000" v-model="spend">
+				<input type="text" placeholder="e.g. 150000" :value="spendDisplay" @blur="setSpend($event.target.value)">
+				<input type="hidden" v-model="$v.spend.$model">
+				<div v-if="$v.spend.$anyError">
+					<div class="error" v-if="! $v.spend.required">Field is required</div>
+					<div class="error" v-if="! $v.spend.numeric">Only numbers allowed</div>										
+				</div>
 			</div>
 			<div>
 				<label for="name">Company Spend Ability</label>
-				<input type="text" placeholder="e.g. $150.000 - $300.000" v-model="spendAbility">
+				<input type="text" placeholder="e.g. $150000 - $300000" v-model="$v.spendAbility.$model">
+				<div v-if="$v.spendAbility.$anyError">
+					<div class="error" v-if="! $v.spendAbility.spendRangeValidator">Please use $150.000 - $300.000 format</div>					
+					<div class="error" v-if="! $v.spendAbility.spendMaxGtMinValidator">Maximum spend (right side) must be greater than the minimum</div>	
+				</div>
 			</div>
 			<div>
 				<label for="name">Notes</label>
 				<textarea type="text" placeholder="e.g. Good Tech Company" v-model="notes" @click="showAdditionalNotes"/>
 			</div>
-			<modal name="additionalNotes" height="350">
+			<modal name="additionalNotes" height="375">
   			<div class="modal-area">
 					<label for="name">Notes</label>
 					<textarea type="text" placeholder="e.g. Good Tech Company" v-model="notes"/>
 					<div>
-						<button @click="hideAdditionalNotes">Save</button>
+						<button @click.prevent="hideAdditionalNotes">Save</button>
 					</div>					
 				</div>
 			</modal>
@@ -34,36 +45,88 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+import { required, numeric, helpers } from 'vuelidate/lib/validators';
+
 const faker = require('faker');
 
+const currencyPrefix = "$ ";
+
+/** Matches two money formatted numbers separated by "-" */
+const spendRangePattern 					= /^((\$[ ]?){1}([0-9]{1,}(\.[0-9]{1,2})?){1})([ ]?-[ ]?)((\$[ ]?){1}([0-9]{1,}(\.[0-9]{1,2})?){1})$/;
+const spendRangeValidator					= helpers.regex('spendRangeValidator', spendRangePattern);
+const spendRangeMaxGtMinValidator = function (spendRange) {		
+	/** Skip invalid values provided */
+	if (spendRange === undefined || spendRange === '') { return false; } 
+	
+	/** No need to check regex twice if there were other errors */
+	if (! this.$v.spendAbility.spendRangeValidator) { return false; }
+
+	/** Grab groups 3 and 8 (actual numeric values) to compare each other */
+	let ranges 		= spendRange.match(spendRangePattern);
+	let minSpend 	= parseFloat(ranges[3]);
+	let maxSpend 	= parseFloat(ranges[8]);
+
+	return minSpend < maxSpend;
+};
+
 export default {	
-	data: function () {
-		return {			
-			name: 				'',
+	data: function () {	
+		return { 
+ 			name: 				'',
 			spend: 				'',
-			spendAbility: [],
-			notes: 				''
+			spendAbility: '',
+			notes: 				'',		
 		}
 	},
-	computed: {		
-		formHeading: () => faker.lorem.paragraph()
+	mounted: function () {
+		/** We don't have a state yet, creating a company operation */
+		if (! this.company) { return; } 
+
+		/** We don't want clutter on our state during validation steps, therefore copy state to local company data */		
+		Object.assign(this.$data, this.company); 
 	},
-	methods: {
+	computed: {		
+		/* ...mapState('company',['name', 'spend', 'spendAbility', 'notes']), */
+		/** Not using module namespace here as we deliberately want data separated from company state during validation */
+		...mapState(['company']),				
+		formHeading: () => faker.lorem.paragraph(),
+		spendDisplay: function () {
+			return this.$isNumeric(this.spend) ? currencyPrefix + this.spend : this.spend;			
+		}
+	},
+	methods: {		
+		...mapActions('company',['updateCompany']),
+		setSpend: function (value) { 
+			/** Ignore currency part */			
+			this.spend = value.replace(currencyPrefix, "");
+			this.$v.spend.$touch();
+		},
 		showAdditionalNotes: function () {
 			this.$modal.show('additionalNotes');
 		},
 		hideAdditionalNotes: function () {
 			this.$modal.hide('additionalNotes');
+		},
+		attemptSubmit: function () {
+			/** Do not submit on for errors */
+			if (this.$v.$invalid) { return; }
+
+			this.updateCompany(this.$data);
 		}
 	},
-	validations: {
+	validations: {		 
 		name: {
-			required: true,
-			minLength: 3,
+			required,
 		},
 		spend: {
-			required: true
-		}
+			required,
+			numeric
+		},
+		spendAbility: {
+			spendRangeValidator,
+			spendRangeMaxGtMinValidator
+		}		
 	}
 }
 </script>
@@ -82,7 +145,7 @@ form {
 
 	input {
 		@extend .form-item;
-		height: 5vh;
+		height: 25px;
 		width: 	50%;		
 	}
 

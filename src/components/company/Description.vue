@@ -2,15 +2,17 @@
   <div class="column">
 		<div class="row">
 			<img :src="logo" />
-			<h3>{{ companyName }}</h3>
+			<h3>{{ company.name }}</h3>
 		</div>
-		<p>{{ description }}</p>
+		<p>{{ company.notes }} and {{ company.spend }} also {{ company.spendAbility }}</p>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations, mapGetters } from 'vuex';
 export default {
 	computed: {
+		...mapState(['company']),
 		logo () {
 			return this.$store.state.company.logo;
 		},

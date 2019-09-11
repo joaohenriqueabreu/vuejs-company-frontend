@@ -1,14 +1,29 @@
 import Vue  from 'vue';
 import Vuex from 'vuex';
 
-import CompanyStore from 'Store/company.js';
-import UserStore    from 'Store/user.js';
+import CompanyState 		from 'Store/companyState.js';
+import UserState    		from 'Store/userState.js';
+
+import CompanyMutations from 'Store/companyMutations.js';
+import CompanyActions 	from 'Store/companyActions.js';
 
 Vue.use(Vuex);
 
+const companyModule = {
+	namespaced: true,
+	state: 			CompanyState,
+	actions:	 	CompanyActions,
+	mutations: 	CompanyMutations
+};
+
+const userModule = {
+	namespaced: true,
+	state:			UserState
+};
+
 export default new Vuex.Store({
-    state: {
-        company:	CompanyStore,
-        user:    	UserStore
-    }
+	modules: {
+		company: companyModule,
+		user: 	 userModule,
+	}    
 });

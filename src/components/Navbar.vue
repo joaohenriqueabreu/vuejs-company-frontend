@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <nav v-if="isMobile()">
+      <nav v-if="$isMobile()">
         <div class="icon">
           <router-link :to="{ name: 'home' }" v-slot="{ href, navigate }">
             <a :href="href" @click="navigate">
