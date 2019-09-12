@@ -84,10 +84,9 @@ export default {
 		if (! this.company) { return; } 
 
 		/** We don't want clutter on our state during validation steps, therefore copy state to local company data */		
-		Object.assign(this.$data, this.company); 
+		Object.assign(this.$data, this.company.activeCompany); 
 	},
 	computed: {		
-		/* ...mapState('company',['name', 'spend', 'spendAbility', 'notes']), */
 		/** Not using module namespace here as we deliberately want data separated from company state during validation */
 		...mapState(['company']),				
 		formHeading: () => faker.lorem.paragraph(),
@@ -96,7 +95,7 @@ export default {
 		}
 	},
 	methods: {		
-		...mapActions('company',['updateCompany']),
+		...mapActions('company',['saveCompany']),
 		setSpend: function (value) { 
 			/** Ignore currency part */			
 			this.spend = value.replace(currencyPrefix, "");
@@ -112,7 +111,7 @@ export default {
 			/** Do not submit on for errors */
 			if (this.$v.$invalid) { return; }
 
-			this.updateCompany(this.$data);
+			this.saveCompany(this.$data);
 		}
 	},
 	validations: {		 

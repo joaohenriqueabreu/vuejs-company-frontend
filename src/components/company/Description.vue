@@ -1,10 +1,11 @@
 <template>
-  <div class="column">
-		<div class="row">
+  <div>
+		<div>
 			<img :src="logo" />
-			<h3>{{ company.name }}</h3>
+			<h3>{{ activeCompany.name }}</h3>
 		</div>
-		<p>{{ company.notes }} and {{ company.spend }} also {{ company.spendAbility }}</p>
+		<p>{{ activeCompany.notes }}</p>
+		<p> Spend: {{ activeCompany.spend }} and Spend Ability: {{ activeCompany.spendAbility }}</p>
   </div>
 </template>
 
@@ -12,20 +13,14 @@
 import { mapState, mapMutations, mapGetters } from 'vuex';
 export default {
 	computed: {
-		...mapState(['company']),
-		logo () {
-			return this.$store.state.company.logo;
-		},
-		companyName () {
-			return this.$store.state.company.name;
-		},
-		description () {
-			return this.$store.state.company.description;
-		}
+		...mapState('company', ['activeCompany']),
+		...mapGetters('company', ['logo'])		
 	}
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+	img {
+		height: 10vh;
+	}
 </style>

@@ -1,5 +1,8 @@
 <template>
-  <div>something3</div>
+  <div>
+    <h4>Similar Companies</h4>
+    <hr>
+  </div>
 </template>
 
 <script>

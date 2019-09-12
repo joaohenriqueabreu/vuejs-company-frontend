@@ -1,5 +1,8 @@
 <template>
-  <div>something4</div>
+  <div>
+    <h4>Company Spend History</h4>
+    <hr>
+  </div>
 </template>
 
 <script>

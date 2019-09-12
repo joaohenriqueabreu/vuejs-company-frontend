@@ -1,9 +1,9 @@
 <template>
   <div>
       <CompanyDescription></CompanyDescription>
-      <div>
-        <CompanyActivities class="info-box"></CompanyActivities>
-        <div>
+      <div class="special-info-container">
+        <CompanyActivities class="info-box activities"></CompanyActivities>
+        <div class="secondary-info-container">
           <SimilarCompanies class="info-box"></SimilarCompanies>
           <SpendHistoryGraph class="info-box"></SpendHistoryGraph>
           <SpendHistory class="info-box"></SpendHistory>
@@ -18,6 +18,14 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+  div {
+    min-height: 10vh;
+  }
+  .activities {
+    height: 100%;
+  }
+  .special-info-container {
+    @extend %row;
+  }  
 </style>

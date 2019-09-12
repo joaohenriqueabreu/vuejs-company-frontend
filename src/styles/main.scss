@@ -99,7 +99,7 @@ $sizes: (5, 10, 20, 40);
 
 /** Common elements */
 .info-box {	
-	@extend %bg-white, %rounded-corner, %margin-right-10, %thin-grey-border;		
+	@extend %bg-white, %rounded-corner, %margin-right-10, %margin-bottom-20, %thin-grey-border;		
 	width: 	28vw;	
 	
 	h4 {

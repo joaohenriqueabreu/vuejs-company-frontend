@@ -1,6 +1,15 @@
+const faker = require('faker');
+
+const companies = [
+	{
+		logo_url:	'assets/images/microsoft.png',
+		name:     'Microsoft',
+		notes:    faker.lorem.paragraph()
+	}        
+];           
+
 export default {
-    logo: 'assets/images/microsoft.png',
-    name: 'Microsoft',
-    notes: 'asda asd asdas sada sdas dasdas das dasd adas das'
-}
+	activeCompany: 	companies[0],
+	companies: 			companies
+};
   

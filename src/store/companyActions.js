@@ -1,5 +1,5 @@
 export default {
-	updateCompany ({ commit }, data) {		
-		commit('updateCompany', data);
+	saveCompany ({ commit }, data) {		
+		commit('saveCompany', data);
 	}
 }
