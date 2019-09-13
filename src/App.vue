@@ -32,6 +32,10 @@ export default { }
       left:     0;       
     }
 
+    .content {
+      margin-bottom:  10vh;
+    }
+
     footer {      
       @extend %full-width;
       position: absolute;

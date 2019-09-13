@@ -37,9 +37,8 @@ export default {
     } 
 
     input[type=text] {
-        @extend %bg-dark-blue, %padding-left-40, %color-white, %rounded-corner;
-        height:         4vh;
-        width:          20vw;
+        @extend %bg-dark-blue, %padding-left-40, %color-white, %rounded-corner, %full-width;
+        height:         100%;        
         border:         none;
         &::placeholder {
           @extend %color-white;

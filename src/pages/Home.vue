@@ -1,6 +1,8 @@
 <template>
   <div>
-    <CompanySearch></CompanySearch>
+    <div class="home">
+      <CompanySearch></CompanySearch>
+    </div>
   </div>
 </template>
 
@@ -12,9 +14,13 @@ export default {
 
 <style lang="scss" scoped>
   div {
-    display:          flex;
-    flex-direction:   row;
-    align-items:      center;
-    justify-content:  center;
+     @extend %full-width, %row;                  
+      align-items:      center;
+      justify-content:  center;
+
+    .home {      
+      width:            50vw;
+      height:           20vh;
+    }        
   }
 </style>

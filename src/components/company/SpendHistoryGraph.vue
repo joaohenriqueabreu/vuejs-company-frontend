@@ -20,8 +20,8 @@ export default {
     align-items: center;
   }
 
-  img {
-    /* @extend %margin-20; */
+  img {    
     height: 25vh;
+    max-width: 100%;
   }
 </style>

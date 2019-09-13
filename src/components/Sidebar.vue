@@ -1,9 +1,8 @@
 <template>
 	<div>		
 		<div class="bar-items">
-			<router-link v-for="option in sidebarOptions" 
-				:to="{ name: option.name, params: {slug: $route.params.slug} }" v-slot="{ href, navigate }"
-				v-bind:key="option.label"> 			
+			<router-link v-for="option in sidebarOptions" :key="option.label"
+				:to="{ name: option.name, params: {slug: $route.params.slug} }" v-slot="{ href, navigate }"> 			
 				<a :href="href" @click="navigate">{{ option.label }}</a>
 			</router-link>
 		</div>

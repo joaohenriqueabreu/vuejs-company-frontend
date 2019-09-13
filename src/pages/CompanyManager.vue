@@ -13,17 +13,38 @@ export default {
 
 <style lang="scss" scoped>
   div {
-    display:        flex;
-    flex-direction: row;
+    @include mobile-only {
+      display:        flex;
+      flex-direction: column;      
+    }
+    
+    @include other-devices {
+      display:        flex;
+      flex-direction: row;
+    }
   }
 
   .sidebar {
-    @extend %margin-right-40;
-    width:    20vw;    
+    @extend %margin-right-40, %margin-bottom-40;
+
+    @include mobile-only {
+      width:    100%;    
+    }
+
+    @include other-devices {
+      width:    20vw;
+    }
   }
 
   .company-area {
     @extend %thin-grey-border, %column;
-    width:    60vw;
+
+    @include mobile-only {
+      width:    100%;
+    }
+
+    @include other-devices {
+      width:    60vw;
+    }    
   }
 </style>

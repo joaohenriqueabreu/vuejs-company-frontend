@@ -3,8 +3,8 @@
     <footer>
       <section class="left">
         <div class="main-items"> 
-          <a v-for="(option, index) in footerOptions" 
-            v-bind:key="option.label" :href="baseUrl.concat(option.action)" target="_blank">
+          <a v-for="(option, index) in footerOptions" :key="option.label" 
+            :href="baseUrl.concat(option.action)" target="_blank">
             {{ option.label }}
             <span v-if="index !== footerOptions.length - 1">|</span>      
           </a>
